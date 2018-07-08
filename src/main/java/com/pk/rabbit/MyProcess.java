@@ -11,18 +11,18 @@ import com.pk.rabbit.handle.MessageProcessInter;
 
 public class MyProcess implements MessageProcessInter {
 
-  @Override
-  public SuccessFlag process(Message message) {
-    MessageConverter messageConverter = new Jackson2JsonMessageConverter();
-    // ConsumeFlag cf = (ConsumeFlag) messageConverter.fromMessage(message);
-    // System.out.println(cf.getError());
-    try {
-      System.out.println(new String(message.getBody(), "UTF-8"));
-    } catch (UnsupportedEncodingException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
+    @Override
+    public SuccessFlag process(Message message) {
+        MessageConverter messageConverter = new Jackson2JsonMessageConverter();
+        // ConsumeFlag cf = (ConsumeFlag) messageConverter.fromMessage(message);
+        // System.out.println(cf.getError());
+        try {
+            System.out.println(new String(message.getBody(), "UTF-8"));
+        } catch (UnsupportedEncodingException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return new SuccessFlag(true, "");
     }
-    return new SuccessFlag(true, "");
-  }
 
 }
